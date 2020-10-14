@@ -5,6 +5,9 @@ import {connect} from 'react-redux';
 import HeaderComponent from '../Header/Header';
 import CartItem from '../CartItem/CartItem';
 import OrderForm from '../OrderForm/OrderForm';
+import EmtyCardLogo from '../../images/empty-card.png'
+
+import './Cart.css';
 
 class CartComponent extends Component {
 
@@ -26,10 +29,10 @@ class CartComponent extends Component {
                 <HeaderComponent/>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-4 order-md-2 mb-4">
+                        <div className="col-md-4 order-md-2 mb-4 cart-order-form">
                             <OrderForm onSubmit={this.onSubmitForm}/>
                         </div>
-                        <div className="col-md-8 order-md-1">
+                        <div className="col-md-8 order-md-1 cart-items">
                             {goods.length && goods.map((item) => {
                                 return item.isInCart ? <CartItem
                                     key={item.id}
@@ -39,7 +42,7 @@ class CartComponent extends Component {
                             })}
                             <div>
                                 {totalValue > 0 ? <span>TOTAL: ${totalValue} UAH</span>
-                                    : <span>The cart is empty</span>}
+                                    : <img className="empty-card" src={EmtyCardLogo} alt="empty card"/>}
 
                             </div>
                         </div>

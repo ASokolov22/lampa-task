@@ -3,6 +3,8 @@ import {goodsListActions} from '../../actions';
 import {connect} from 'react-redux';
 import HeaderComponent from '../Header/Header';
 
+import './GoodsList.css';
+
 class GoodsList extends Component {
 
     componentDidMount(){
@@ -20,7 +22,7 @@ class GoodsList extends Component {
         return (
             goods.map(item => (
                 <div className="col-md-4" key={item.id}>
-                    <div className="card mb-4 shadow-sm">
+                    <div className="card mb-4 shadow-sm card-item">
                         <img src={item.thumbnailUrl} alt={item.id}/>
                         <div className="card-body">
                             <p className="card-text">{item.title}</p>
@@ -38,7 +40,10 @@ class GoodsList extends Component {
                                         onClick={() => removeFromCart(item, totalValue, goods)}
                                     >Remove</button>
                                 </div>
-                                <small className="text-muted">{item.price} UAH</small>
+                                <small
+                                    className="text-muted">
+                                    {item.price} UAH {item.isInCart ? <i className="fa fa-shopping-cart text-success"/>
+                                    : null}</small>
                             </div>
                         </div>
                     </div>

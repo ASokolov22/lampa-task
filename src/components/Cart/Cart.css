@@ -1,0 +1,9 @@
+.cart-items,
+.cart-order-form {
+    padding-top: 1.5rem;
+}
+
+.empty-card {
+    width: 300px;
+    padding-top: 1.5rem;
+}

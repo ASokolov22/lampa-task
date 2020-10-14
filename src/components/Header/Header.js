@@ -14,12 +14,12 @@ class HeaderComponent extends Component{
 
         return(
             <header>
-                <div className="navbar navbar-dark bg-dark text-white shadow-sm">
+                <div className="navbar navbar-light bg-light shadow-sm">
                     <div className="container d-flex justify-content-between">
                         {url === '/' ? 'Goods list' : 'Cart'}
                         <div>
-                            {url === '/' && <span>{totalValue > 0 ? totalValue
-                                : storageValue > 0 ? storageValue
+                            {url === '/' && <span>{totalValue > 0 ? totalValue + ' UAH'
+                                : storageValue > 0 ? storageValue + ' UAH'
                                 : ''}</span>}
                             {url === '/' ?
                                 <Link to="/cart"
