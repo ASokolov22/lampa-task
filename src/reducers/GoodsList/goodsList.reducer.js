@@ -11,6 +11,25 @@ export function goodsList(state = initialState, action){
                 goods: action.payload.goods,
             }
         }
+        case goodsListConstants.GET_ALL_GOODS_FROM_STORAGE: {
+            return {
+                ...state,
+                goods: action.payload.goods,
+            }
+        }
+        case goodsListConstants.ADD_TO_CART: {
+            return {
+                ...state,
+                goods: action.payload.goods,
+            }
+        }
+
+        case goodsListConstants.REMOVE_FROM_CART: {
+            return {
+                ...state,
+                goods: action.payload.goods,
+            }
+        }
         default:
             return state
     }

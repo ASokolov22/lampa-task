@@ -2,26 +2,32 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Router} from 'react-router';
 import {Link} from 'react-router-dom';
-import {createBrowserHistory} from 'history';
 
 import './Header.css';
 
 class HeaderComponent extends Component{
 
     render(){
-        const {label} = this.props;
-        const history = createBrowserHistory();
+        const url = window.location.pathname;
+        const {totalValue} = this.props;
+        const storageValue = localStorage.getItem('totalValue');
 
         return(
             <header>
                 <div className="navbar navbar-dark bg-dark text-white shadow-sm">
                     <div className="container d-flex justify-content-between">
-                        {label}
+                        {url === '/' ? 'Goods list' : 'Cart'}
                         <div>
-                            <span>155$</span>
-                            <Link to="/cart"
-                                  className="fa fa-shopping-cart text-success"
-                            />
+                            {url === '/' && <span>{totalValue > 0 ? totalValue
+                                : storageValue > 0 ? storageValue
+                                : ''}</span>}
+                            {url === '/' ?
+                                <Link to="/cart"
+                                      className="fa fa-shopping-cart text-success"
+                                /> :
+                                <Link to="/"
+                                      className="btn btn-sm btn-outline-secondary"
+                                >Go back</Link>}
                         </div>
                     </div>
                 </div>
@@ -31,9 +37,9 @@ class HeaderComponent extends Component{
 }
 
 const connectedHeaderComponent = connect(state => {
-    const {label} = state.cart;
+    const {totalValue} = state.cart;
     return {
-        label,
+        totalValue
     }
 }, {
 

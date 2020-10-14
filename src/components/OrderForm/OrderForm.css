@@ -1,0 +1,20 @@
+.order-form {
+    text-align: left;
+}
+
+.order-form span {
+    border: none;
+    font-weight: bold;
+    color: #700;
+}
+
+.order-form span::before{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\F06A';
+    margin-right: 5px;
+}
