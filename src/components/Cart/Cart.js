@@ -1,24 +1,28 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router';
-import {goodsListActions} from '../../actions';
+import {goodsListActions, cartActions} from '../../actions';
 import {connect} from 'react-redux';
 import HeaderComponent from '../Header/Header';
 import CartItem from '../CartItem/CartItem';
 import OrderForm from '../OrderForm/OrderForm';
-import EmtyCardLogo from '../../images/empty-card.png'
+import EmtyCardLogo from '../../images/empty-card.png';
 
 import './Cart.css';
 
 class CartComponent extends Component {
 
-    onSubmitForm = (values) => {
-        console.log('Values', values);
+    onSubmitForm = (user) => {
+        const {goods, sendOrder} = this.props;
+        const goodsToSend = goods.filter(item => {
+            return item.isInCart > 0;
+        });
+        sendOrder(user, goodsToSend);
     };
 
     render(){
         let {goods, totalValue} = this.props;
         const {getAllGoodsFromStorage, addToCart, removeFromCart} = this.props;
-        if(!goods.length){
+        if(goods && !goods.length){
             goods = getAllGoodsFromStorage();
         }
         if(!totalValue){
@@ -33,7 +37,7 @@ class CartComponent extends Component {
                             <OrderForm onSubmit={this.onSubmitForm}/>
                         </div>
                         <div className="col-md-8 order-md-1 cart-items">
-                            {goods.length && goods.map((item) => {
+                            {goods && goods.length && goods.map((item) => {
                                 return item.isInCart ? <CartItem
                                     key={item.id}
                                     item={item}
@@ -64,5 +68,6 @@ const connectedCartComponent = connect(state => {
     getAllGoodsFromStorage: goodsListActions.getAllGoodsFromStorage,
     addToCart: goodsListActions.addToCart,
     removeFromCart: goodsListActions.removeFromCart,
+    sendOrder: cartActions.sendOrder,
 })(CartComponent);
 export default CartComponent = connectedCartComponent;
