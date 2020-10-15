@@ -1,7 +1,6 @@
-import {goodsListConstants} from '../../constants';
+import {goodsListConstants, cartConstants} from '../../constants';
 
 const initialState = {
-    label: 'Redux',
     totalValue: 0,
 };
 
@@ -20,6 +19,8 @@ export function cart(state = initialState, action){
                 totalValue: action.payload.totalValue,
             }
         }
+        case cartConstants.SEND_ORDER:
+            return initialState;
         default:
             return state
     }

@@ -1,4 +1,4 @@
-import {goodsListConstants} from '../../constants';
+import {goodsListConstants, cartConstants} from '../../constants';
 const initialState = {
     goods: []
 };
@@ -30,6 +30,8 @@ export function goodsList(state = initialState, action){
                 goods: action.payload.goods,
             }
         }
+        case cartConstants.SEND_ORDER:
+            return initialState;
         default:
             return state
     }

@@ -20,7 +20,7 @@ class GoodsList extends Component {
         }
         const {addToCart, removeFromCart} = this.props;
         return (
-            goods.map(item => (
+            goods && goods.map(item => (
                 <div className="col-md-4" key={item.id}>
                     <div className="card mb-4 shadow-sm card-item">
                         <img src={item.thumbnailUrl} alt={item.id}/>
