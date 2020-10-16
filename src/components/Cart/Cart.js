@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router';
 import {goodsListActions, cartActions} from '../../actions';
 import {connect} from 'react-redux';
 import HeaderComponent from '../Header/Header';

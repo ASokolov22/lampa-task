@@ -1,6 +1,5 @@
 import React from 'react';
-import {Router} from 'react-router';
-import {Route, Redirect, Switch, BrowserRouter} from 'react-router-dom';
+import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 import {base} from '../../base';
 import './App.css';
